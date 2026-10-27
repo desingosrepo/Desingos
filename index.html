@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Designos - iOS Tema Mağazası</title>
     <style>
-        /* Renk Paletimiz ve Temel Ayarlar */
         :root {
             --bg-color: #121212;
             --card-bg: #1C1C1E;
@@ -27,7 +26,6 @@
             align-items: center;
         }
 
-        /* Üst Kısım (Header) */
         header {
             width: 100%;
             padding: 20px;
@@ -48,7 +46,7 @@
         }
 
         h1 span {
-            color: var(--accent-amber); /* 'OS' kısmı turuncu */
+            color: var(--accent-amber);
         }
 
         p.subtitle {
@@ -57,7 +55,6 @@
             margin-top: 5px;
         }
 
-        /* Tema Kartları Alanı */
         .container {
             width: 90%;
             max-width: 1000px;
@@ -67,7 +64,6 @@
             gap: 20px;
         }
 
-        /* Tekil Tema Kartı */
         .theme-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -108,7 +104,6 @@
             margin-bottom: 15px;
         }
 
-        /* İndir Butonu */
         .download-btn {
             background-color: var(--accent-amber);
             color: #000;
@@ -119,10 +114,62 @@
             font-weight: bold;
             font-size: 14px;
             margin-top: auto;
+            display: block;
         }
 
         .download-btn:hover {
             background-color: #FBBF24;
+        }
+
+        .section-title {
+            width: 90%;
+            max-width: 1000px;
+            margin-top: 40px;
+            margin-bottom: 10px;
+            font-size: 20px;
+            color: var(--accent-amber);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .how-to {
+            width: 90%;
+            max-width: 1000px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .how-to ol {
+            padding-left: 20px;
+        }
+
+        .how-to li {
+            margin-bottom: 10px;
+            color: var(--text-muted);
+        }
+
+        .how-to strong {
+            color: var(--text-main);
+        }
+
+        .repo-btn {
+            display: inline-block;
+            background-color: var(--accent-navy);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background 0.2s;
+        }
+
+        .repo-btn:hover {
+            background-color: #2b4cb3;
         }
     </style>
 </head>
@@ -157,6 +204,18 @@
             <p class="theme-info">iOS 15-16 • 200 İkon</p>
             <a href="#" class="download-btn">İndir (.zip)</a>
         </div>
+    </div>
+
+    <h2 class="section-title">📖 Nasıl Yapılır?</h2>
+    <div class="how-to">
+        <p>Temaları kullanmak için cihazınızda <strong>SnowBoard</strong> tweak'inin kurulu olması gerekir. Aşağıdaki adımları takip edin:</p>
+        <ol>
+            <li><strong>SnowBoard'u Yükleyin:</strong> Sileo'yu açın ve <a href="https://sparkdev.me" target="_blank" style="color: var(--accent-amber);">https://sparkdev.me</a> reposunu ekleyin. Ardından <em>SnowBoard</em> paketini kurun (iOS 16 rootless desteklidir)[reference:1].</li>
+            <li><strong>Temayı İndirin:</strong> Yukarıdaki katalogdan beğendiğiniz temanın "İndir" butonuna tıklayın.</li>
+            <li><strong>Dosyayı Yerleştirin:</strong> İndirdiğiniz <code>.zip</code> dosyasını Filza ile açın ve içindeki klasörü <code>/var/jb/Library/Themes/</code> dizinine taşıyın.</li>
+            <li><strong>Aktifleştirin:</strong> Ayarlar > SnowBoard menüsüne gidin, temayı seçin ve "Respring" yapın.</li>
+        </ol>
+        <a href="https://sparkdev.me" target="_blank" class="repo-btn">🔗 SparkDev Reposunu Aç</a>
     </div>
 
 </body>
