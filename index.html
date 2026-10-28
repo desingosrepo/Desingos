@@ -91,6 +91,27 @@
             background-color: var(--accent-amber); color: black; border: none;
             padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; margin-right: 15px;
         }
+
+        /* Dinamik Satırlar İçin Stiller */
+        .app-row {
+            display: flex; gap: 10px; margin-bottom: 15px; align-items: center;
+            background-color: #2C2C2E; padding: 10px; border-radius: 8px; border: 1px solid var(--border-color);
+        }
+        .app-row select { width: 40%; padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); background-color: #1C1C1E; color: white; }
+        .app-row input[type="file"] { width: 60%; padding: 8px; background-color: transparent; border: none; color: white; font-size: 14px; }
+        .app-row input[type="file"]::file-selector-button {
+            background-color: var(--accent-amber); color: black; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer; font-weight: bold; margin-right: 10px;
+        }
+        .remove-row-btn {
+            background-color: #ff4444; color: white; border: none; border-radius: 6px;
+            padding: 8px 12px; cursor: pointer; font-weight: bold; height: 100%;
+        }
+
+        .add-row-btn {
+            background-color: #333333; color: var(--accent-amber); border: 1px dashed var(--accent-amber);
+            padding: 12px; border-radius: 8px; width: 100%; cursor: pointer; font-weight: bold; margin-bottom: 15px;
+        }
+
         .generate-btn {
             background-color: var(--accent-amber); color: #000; border: none; padding: 15px;
             border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; width: 100%;
@@ -153,44 +174,44 @@
         </button>
         
         <div id="generatorContent" class="toggle-content">
-            <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px; text-align: left;">İstediğin uygulamayı seç, fotoğrafını yükle ve anında SnowBoard uyumlu zip dosyanı indir!</p>
+            <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px; text-align: left;">İstediğiniz kadar uygulama seçip fotoğraf yükleyin. Hepsini tek bir SnowBoard teması olarak indirin!</p>
             
             <div class="form-group">
-                <label>Tema Adı (Örn: Mavi Safari)</label>
+                <label>Tema Adı (Örn: Benim Temam)</label>
                 <input type="text" id="genThemeName" placeholder="Tema Adı Girin">
             </div>
 
-            <div class="form-group">
-                <label>Hangi Uygulama İçin?</label>
-                <select id="genAppSelect">
-                    <option value="com.apple.mobilesafari">Safari</option>
-                    <option value="com.google.ios.youtube">YouTube</option>
-                    <option value="com.apple.mobilemail">Mail</option>
-                    <option value="com.apple.MobileSMS">Mesajlar</option>
-                    <option value="com.apple.Preferences">Ayarlar</option>
-                    <option value="com.apple.mobileslideshow">Fotoğraflar</option>
-                    <option value="com.apple.Music">Müzik</option>
-                    <option value="com.apple.camera">Kamera</option>
-                    <option value="com.google.gmail">Gmail</option>
-                    <option value="com.burbn.instagram">Instagram</option>
-                    <option value="com.atebits.Tweetie2">X (Twitter)</option>
-                    <option value="net.whatsapp.WhatsApp">WhatsApp</option>
-                    <option value="com.spotify.client">Spotify</option>
-                    <option value="com.zhiliaoapp.musically">TikTok</option>
-                    <option value="com.netflix.Netflix">Netflix</option>
-                    <option value="ph.telegra.Telegraph">Telegram</option>
-                    <option value="com.hammerandchisel.discord">Discord</option>
-                    <option value="com.facebook.Facebook">Facebook</option>
-                    <option value="com.apple.MobileStore">App Store</option>
-                    <option value="com.apple.mobiletimer">Saat</option>
-                </select>
+            <!-- Uygulama Satırları Buraya Gelecek -->
+            <div id="appRowsContainer">
+                <!-- İlk satır (varsayılan) -->
+                <div class="app-row">
+                    <select class="appSelect">
+                        <option value="com.apple.mobilesafari">Safari</option>
+                        <option value="com.google.ios.youtube">YouTube</option>
+                        <option value="com.apple.mobilemail">Mail</option>
+                        <option value="com.apple.MobileSMS">Mesajlar</option>
+                        <option value="com.apple.Preferences">Ayarlar</option>
+                        <option value="com.apple.mobileslideshow">Fotoğraflar</option>
+                        <option value="com.apple.Music">Müzik</option>
+                        <option value="com.apple.camera">Kamera</option>
+                        <option value="com.google.gmail">Gmail</option>
+                        <option value="com.burbn.instagram">Instagram</option>
+                        <option value="com.atebits.Tweetie2">X (Twitter)</option>
+                        <option value="net.whatsapp.WhatsApp">WhatsApp</option>
+                        <option value="com.spotify.client">Spotify</option>
+                        <option value="com.zhiliaoapp.musically">TikTok</option>
+                        <option value="com.netflix.Netflix">Netflix</option>
+                        <option value="ph.telegra.Telegraph">Telegram</option>
+                        <option value="com.hammerandchisel.discord">Discord</option>
+                        <option value="com.facebook.Facebook">Facebook</option>
+                        <option value="com.apple.MobileStore">App Store</option>
+                        <option value="com.apple.mobiletimer">Saat</option>
+                    </select>
+                    <input type="file" class="appImageFile" accept="image/png, image/jpeg">
+                </div>
             </div>
 
-            <div class="form-group">
-                <label>İkon Fotoğrafı (PNG/JPG)</label>
-                <input type="file" id="genImageFile" accept="image/png, image/jpeg">
-            </div>
-
+            <button class="add-row-btn" onclick="addAppRow()">➕ Başka Uygulama Ekle</button>
             <button class="generate-btn" onclick="generateTheme()">⚡ Temayı Oluştur ve İndir</button>
         </div>
     </div>
@@ -257,7 +278,7 @@
 
     <!-- JAVASCRIPT KODLARI -->
     <script>
-        // 1. TEMA ÜRETİCİYİ AÇ/KAPAT
+        // 1. AÇ/KAPAT FONKSİYONLARI
         function toggleGen() {
             var content = document.getElementById("generatorContent");
             var btn = document.getElementById("genBtn");
@@ -272,7 +293,6 @@
             }
         }
 
-        // 2. KILAVUZU AÇ/KAPAT
         function toggleGuide() {
             var guide = document.getElementById("temaYapimKılavuzu");
             var btn = document.getElementById("guideBtn");
@@ -287,41 +307,76 @@
             }
         }
 
-        // 3. TEMA OLUŞTURMA MANTIĞI
+        // 2. YENİ SATIR EKLEME
+        function addAppRow() {
+            const container = document.getElementById('appRowsContainer');
+            const newRow = document.createElement('div');
+            newRow.className = 'app-row';
+            
+            // Select menüsünü kopyala
+            const selectOptions = `
+                <option value="com.apple.mobilesafari">Safari</option>
+                <option value="com.google.ios.youtube">YouTube</option>
+                <option value="com.apple.mobilemail">Mail</option>
+                <option value="com.apple.MobileSMS">Mesajlar</option>
+                <option value="com.apple.Preferences">Ayarlar</option>
+                <option value="com.apple.mobileslideshow">Fotoğraflar</option>
+                <option value="com.apple.Music">Müzik</option>
+                <option value="com.apple.camera">Kamera</option>
+                <option value="com.google.gmail">Gmail</option>
+                <option value="com.burbn.instagram">Instagram</option>
+                <option value="com.atebits.Tweetie2">X (Twitter)</option>
+                <option value="net.whatsapp.WhatsApp">WhatsApp</option>
+                <option value="com.spotify.client">Spotify</option>
+                <option value="com.zhiliaoapp.musically">TikTok</option>
+                <option value="com.netflix.Netflix">Netflix</option>
+                <option value="ph.telegra.Telegraph">Telegram</option>
+                <option value="com.hammerandchisel.discord">Discord</option>
+                <option value="com.facebook.Facebook">Facebook</option>
+                <option value="com.apple.MobileStore">App Store</option>
+                <option value="com.apple.mobiletimer">Saat</option>
+            `;
+
+            newRow.innerHTML = `
+                <select class="appSelect">${selectOptions}</select>
+                <input type="file" class="appImageFile" accept="image/png, image/jpeg">
+                <button class="remove-row-btn" onclick="this.parentElement.remove()">❌</button>
+            `;
+            
+            container.appendChild(newRow);
+        }
+
+        // 3. TEMA OLUŞTURMA MANTIĞI (Çoklu Destek)
         async function generateTheme() {
             const name = document.getElementById('genThemeName').value || 'OzelTema';
-            const appId = document.getElementById('genAppSelect').value;
-            const fileInput = document.getElementById('genImageFile');
             const btn = document.querySelector('.generate-btn');
+            const rows = document.querySelectorAll('.app-row');
+            
+            let filesToProcess = [];
+            
+            // Tüm satırları kontrol et
+            rows.forEach(row => {
+                const appId = row.querySelector('.appSelect').value;
+                const fileInput = row.querySelector('.appImageFile');
+                
+                if (fileInput.files.length > 0) {
+                    filesToProcess.push({ appId: appId, file: fileInput.files[0] });
+                }
+            });
 
-            if (fileInput.files.length === 0) {
-                alert("Lütfen bir fotoğraf seçin!");
+            if (filesToProcess.length === 0) {
+                alert("Lütfen en az bir uygulama için fotoğraf seçin!");
                 return;
             }
 
             btn.innerText = "İşleniyor...";
             btn.disabled = true;
 
-            const file = fileInput.files[0];
-            const img = new Image();
-            const reader = new FileReader();
-
-            reader.onload = function(e) {
-                img.src = e.target.result;
-                img.onload = function() {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = 180;
-                    canvas.height = 180;
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0, 180, 180);
-
-                    const pngData = canvas.toDataURL('image/png').split(',')[1];
-
-                    const zip = new JSZip();
-                    const folderName = name.replace(/\s+/g, '') + ".theme";
-                    const folder = zip.folder(folderName);
-                    
-                    const plistContent = `<?xml version="1.0" encoding="UTF-8"?>
+            const zip = new JSZip();
+            const folderName = name.replace(/\s+/g, '') + ".theme";
+            const folder = zip.folder(folderName);
+            
+            const plistContent = `<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -332,25 +387,48 @@
 </dict>
 </plist>`;
 
-                    folder.file("Info.plist", plistContent);
-                    folder.folder("IconBundles").file(appId + ".png", pngData, {base64: true});
+            folder.file("Info.plist", plistContent);
+            const iconBundles = folder.folder("IconBundles");
 
-                    zip.generateAsync({type:"blob"}).then(function(content) {
-                        const url = window.URL.createObjectURL(content);
-                        const a = document.createElement("a");
-                        a.href = url;
-                        a.download = name.replace(/\s+/g, '') + "_Tema.zip";
-                        document.body.appendChild(a);
-                        a.click();
-                        document.body.removeChild(a);
-                        window.URL.revokeObjectURL(url);
-                        
-                        btn.innerText = "⚡ Temayı Oluştur ve İndir";
-                        btn.disabled = false;
-                    });
-                }
-            };
-            reader.readAsDataURL(file);
+            // Resimleri asenkron işle
+            const processPromises = filesToProcess.map(item => {
+                return new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const img = new Image();
+                        img.onload = function() {
+                            const canvas = document.createElement('canvas');
+                            canvas.width = 180;
+                            canvas.height = 180;
+                            const ctx = canvas.getContext('2d');
+                            ctx.drawImage(img, 0, 0, 180, 180);
+                            
+                            const pngData = canvas.toDataURL('image/png').split(',')[1];
+                            iconBundles.file(item.appId + ".png", pngData, {base64: true});
+                            resolve();
+                        };
+                        img.src = e.target.result;
+                    };
+                    reader.readAsDataURL(item.file);
+                });
+            });
+
+            // Tüm resimler işlendikten sonra zipi indir
+            Promise.all(processPromises).then(() => {
+                zip.generateAsync({type:"blob"}).then(function(content) {
+                    const url = window.URL.createObjectURL(content);
+                    const a = document.createElement("a");
+                    a.href = url;
+                    a.download = name.replace(/\s+/g, '') + "_Tema.zip";
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    window.URL.revokeObjectURL(url);
+                    
+                    btn.innerText = "⚡ Temayı Oluştur ve İndir";
+                    btn.disabled = false;
+                });
+            });
         }
 
         // 4. ARAMA FONKSİYONU
