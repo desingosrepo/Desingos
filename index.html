@@ -11,7 +11,13 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
+    <!-- ZIP oluşturmak için JSZip -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    
+    <!-- Arama yapılabilir menü için jQuery ve Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <style>
         :root {
@@ -83,13 +89,9 @@
         /* Form Elemanları */
         .form-group { margin-bottom: 15px; text-align: left; }
         .form-group label { display: block; margin-bottom: 5px; color: var(--text-muted); font-size: 14px; }
-        .form-group input[type="text"], .form-group select, .form-group input[type="file"] {
+        .form-group input[type="text"] {
             width: 100%; padding: 12px; background-color: #2C2C2E;
             border: 1px solid var(--border-color); border-radius: 8px; color: white; font-size: 16px; box-sizing: border-box;
-        }
-        .form-group input[type="file"]::file-selector-button {
-            background-color: var(--accent-amber); color: black; border: none;
-            padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; margin-right: 15px;
         }
 
         /* Dinamik Satırlar İçin Stiller */
@@ -97,8 +99,20 @@
             display: flex; gap: 10px; margin-bottom: 15px; align-items: center;
             background-color: #2C2C2E; padding: 10px; border-radius: 8px; border: 1px solid var(--border-color);
         }
-        .app-row select { width: 40%; padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); background-color: #1C1C1E; color: white; }
-        .app-row input[type="file"] { width: 60%; padding: 8px; background-color: transparent; border: none; color: white; font-size: 14px; }
+        
+        /* Select2 Özelleştirmeleri */
+        .select2-container { width: 40% !important; }
+        .select2-container--default .select2-selection--single {
+            background-color: #1C1C1E; border: 1px solid var(--border-color); border-radius: 6px; height: 40px; padding-top: 5px;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered { color: white; line-height: 30px; }
+        .select2-container--default .select2-selection--single .select2-selection__arrow { height: 38px; }
+        .select2-dropdown { background-color: #1C1C1E; border: 1px solid var(--border-color); color: white; }
+        .select2-search__field { background-color: #2C2C2E; color: white; border: 1px solid var(--border-color) !important; border-radius: 4px; }
+        .select2-results__option--highlighted[aria-selected] { background-color: var(--accent-amber) !important; color: black; }
+        .select2-results__option { color: white; }
+
+        .app-row input[type="file"] { width: 50%; padding: 8px; background-color: transparent; border: none; color: white; font-size: 14px; }
         .app-row input[type="file"]::file-selector-button {
             background-color: var(--accent-amber); color: black; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer; font-weight: bold; margin-right: 10px;
         }
@@ -186,28 +200,108 @@
                 <!-- İlk satır (varsayılan) -->
                 <div class="app-row">
                     <select class="appSelect">
-                        <option value="com.apple.mobilesafari">Safari</option>
-                        <option value="com.google.ios.youtube">YouTube</option>
-                        <option value="com.apple.mobilemail">Mail</option>
-                        <option value="com.apple.MobileSMS">Mesajlar</option>
-                        <option value="com.apple.Preferences">Ayarlar</option>
-                        <option value="com.apple.mobileslideshow">Fotoğraflar</option>
-                        <option value="com.apple.Music">Müzik</option>
+                        <!-- Apple Uygulamaları -->
+                        <option value="com.apple.AppStore">App Store</option>
+                        <option value="com.apple.store.Jolly">Apple Store</option>
+                        <option value="com.apple.supportapp">Apple Support</option>
+                        <option value="com.apple.TVRemote">Apple TV Remote</option>
+                        <option value="com.apple.iBooks">Books</option>
+                        <option value="com.apple.calculator">Hesap Makinesi</option>
+                        <option value="com.apple.mobilecal">Takvim</option>
                         <option value="com.apple.camera">Kamera</option>
-                        <option value="com.google.gmail">Gmail</option>
+                        <option value="com.apple.classroom">Classroom</option>
+                        <option value="com.apple.clips">Clips</option>
+                        <option value="com.apple.mobiletimer">Saat</option>
+                        <option value="com.apple.BarcodeScanner">Kod Tarayıcı</option>
+                        <option value="com.apple.compass">Pusula</option>
+                        <option value="com.apple.MobileAddressBook">Kişiler</option>
+                        <option value="com.apple.facetime">FaceTime</option>
+                        <option value="com.apple.DocumentsApp">Dosyalar</option>
+                        <option value="com.apple.mobileme.fmf1">Arkadaşlarımı Bul</option>
+                        <option value="com.apple.mobileme.fmip1">iPhone'umu Bul</option>
+                        <option value="com.apple.findmy">Bul</option>
+                        <option value="com.apple.Fitness">Fitness</option>
+                        <option value="com.apple.freeform">Freeform</option>
+                        <option value="com.apple.gamecenter">Game Center</option>
+                        <option value="com.apple.mobilegarageband">GarageBand</option>
+                        <option value="com.apple.Health">Sağlık</option>
+                        <option value="com.apple.Home">Ev</option>
+                        <option value="com.apple.iCloudDriveApp">iCloud Drive</option>
+                        <option value="com.apple.iMovie">iMovie</option>
+                        <option value="com.apple.MobileStore">iTunes Store</option>
+                        <option value="com.apple.itunesu">iTunes U</option>
+                        <option value="com.apple.Keynote">Keynote</option>
+                        <option value="com.apple.Magnifier">Büyüteç</option>
+                        <option value="com.apple.mobilemail">Mail</option>
+                        <option value="com.apple.Maps">Haritalar</option>
+                        <option value="com.apple.measure">Ölçüm</option>
+                        <option value="com.apple.MobileSMS">Mesajlar</option>
+                        <option value="com.apple.Music">Müzik</option>
+                        <option value="com.apple.news">Haberler</option>
+                        <option value="com.apple.mobilenotes">Notlar</option>
+                        <option value="com.apple.Numbers">Numbers</option>
+                        <option value="com.apple.Pages">Pages</option>
+                        <option value="com.apple.Passwords">Şifreler</option>
+                        <option value="com.apple.mobilephone">Telefon</option>
+                        <option value="com.apple.Photo-Booth">Photo Booth</option>
+                        <option value="com.apple.mobileslideshow">Fotoğraflar</option>
+                        <option value="com.apple.Playgrounds">Playgrounds</option>
+                        <option value="com.apple.podcasts">Podcast'ler</option>
+                        <option value="com.apple.reminders">Hatırlatıcılar</option>
+                        <option value="com.apple.mobilesafari">Safari</option>
+                        <option value="com.apple.Preferences">Ayarlar</option>
+                        <option value="com.apple.shortcuts">Kısayollar</option>
+                        <option value="com.apple.stocks">Borsa</option>
+                        <option value="com.apple.tips">İpuçları</option>
+                        <option value="com.apple.Translate">Çeviri</option>
+                        <option value="com.apple.tv">TV</option>
+                        <option value="com.apple.videos">Videolar</option>
+                        <option value="com.apple.VoiceMemos">Ses Notları</option>
+                        <option value="com.apple.Passbook">Cüzdan</option>
+                        <option value="com.apple.Bridge">Watch</option>
+                        <option value="com.apple.weather">Hava Durumu</option>
+                        <option value="com.apple.wwdc">WWDC</option>
+                        <!-- Popüler Üçüncü Taraf Uygulamalar -->
+                        <option value="com.google.ios.youtube">YouTube</option>
+                        <option value="com.google.Gmail">Gmail</option>
+                        <option value="com.google.chrome.ios">Chrome</option>
+                        <option value="com.google.Maps">Google Haritalar</option>
+                        <option value="com.google.calendar">Google Takvim</option>
+                        <option value="com.google.Drive">Google Drive</option>
+                        <option value="com.google.Photos">Google Fotoğraflar</option>
                         <option value="com.burbn.instagram">Instagram</option>
-                        <option value="com.atebits.Tweetie2">X (Twitter)</option>
+                        <option value="com.zhiliaoapp.musically">TikTok</option>
                         <option value="net.whatsapp.WhatsApp">WhatsApp</option>
                         <option value="com.spotify.client">Spotify</option>
-                        <option value="com.zhiliaoapp.musically">TikTok</option>
                         <option value="com.netflix.Netflix">Netflix</option>
-                        <option value="ph.telegra.Telegraph">Telegram</option>
-                        <option value="com.hammerandchisel.discord">Discord</option>
                         <option value="com.facebook.Facebook">Facebook</option>
-                        <option value="com.apple.MobileStore">App Store</option>
-                        <option value="com.apple.mobiletimer">Saat</option>
+                        <option value="com.toyopagroup.picaboo">Snapchat</option>
+                        <option value="com.ubercab.UberClient">Uber</option>
+                        <option value="ph.telegra.Telegraph">Telegram</option>
+                        <option value="org.whispersystems.signal">Signal</option>
+                        <option value="com.tinyspeck.chatlyio">Slack</option>
+                        <option value="us.zoom.videomeetings">Zoom</option>
+                        <option value="com.atebits.Tweetie2">X (Twitter)</option>
+                        <option value="com.reddit.Reddit">Reddit</option>
+                        <option value="com.hammerandchisel.discord">Discord</option>
+                        <option value="com.amazon.Amazon">Amazon</option>
+                        <option value="com.ebay.iphone">eBay</option>
+                        <option value="com.alibaba.iAliexpress">AliExpress</option>
+                        <option value="com.booking.Booking">Booking.com</option>
+                        <option value="com.airbnb.app">Airbnb</option>
+                        <option value="com.lyft.iphone">Lyft</option>
+                        <option value="com.pinterest">Pinterest</option>
+                        <option value="com.tumblr.tumblr">Tumblr</option>
+                        <option value="com.linkedin.LinkedIn">LinkedIn</option>
+                        <option value="com.microsoft.Office.Word">Microsoft Word</option>
+                        <option value="com.microsoft.Office.Excel">Microsoft Excel</option>
+                        <option value="com.microsoft.Office.PowerPoint">Microsoft PowerPoint</option>
+                        <option value="com.microsoft.Office.Outlook">Microsoft Outlook</option>
+                        <option value="com.microsoft.Office.OneNote">Microsoft OneNote</option>
+                        <option value="com.microsoft.Office.Teams">Microsoft Teams</option>
                     </select>
                     <input type="file" class="appImageFile" accept="image/png, image/jpeg">
+                    <button class="remove-row-btn" onclick="this.parentElement.remove()" style="display:none;">❌</button>
                 </div>
             </div>
 
@@ -278,6 +372,18 @@
 
     <!-- JAVASCRIPT KODLARI -->
     <script>
+        // Select2'yi başlat
+        $(document).ready(function() {
+            $('.appSelect').select2({
+                placeholder: "Uygulama Ara...",
+                allowClear: true,
+                language: {
+                    noResults: function() { return "Sonuç bulunamadı"; },
+                    searching: function() { return "Aranıyor..."; }
+                }
+            });
+        });
+
         // 1. AÇ/KAPAT FONKSİYONLARI
         function toggleGen() {
             var content = document.getElementById("generatorContent");
@@ -313,29 +419,9 @@
             const newRow = document.createElement('div');
             newRow.className = 'app-row';
             
-            // Select menüsünü kopyala
-            const selectOptions = `
-                <option value="com.apple.mobilesafari">Safari</option>
-                <option value="com.google.ios.youtube">YouTube</option>
-                <option value="com.apple.mobilemail">Mail</option>
-                <option value="com.apple.MobileSMS">Mesajlar</option>
-                <option value="com.apple.Preferences">Ayarlar</option>
-                <option value="com.apple.mobileslideshow">Fotoğraflar</option>
-                <option value="com.apple.Music">Müzik</option>
-                <option value="com.apple.camera">Kamera</option>
-                <option value="com.google.gmail">Gmail</option>
-                <option value="com.burbn.instagram">Instagram</option>
-                <option value="com.atebits.Tweetie2">X (Twitter)</option>
-                <option value="net.whatsapp.WhatsApp">WhatsApp</option>
-                <option value="com.spotify.client">Spotify</option>
-                <option value="com.zhiliaoapp.musically">TikTok</option>
-                <option value="com.netflix.Netflix">Netflix</option>
-                <option value="ph.telegra.Telegraph">Telegram</option>
-                <option value="com.hammerandchisel.discord">Discord</option>
-                <option value="com.facebook.Facebook">Facebook</option>
-                <option value="com.apple.MobileStore">App Store</option>
-                <option value="com.apple.mobiletimer">Saat</option>
-            `;
+            // İlk satırdaki select seçeneklerini kopyala
+            const firstSelect = document.querySelector('.appSelect');
+            const selectOptions = firstSelect.innerHTML;
 
             newRow.innerHTML = `
                 <select class="appSelect">${selectOptions}</select>
@@ -344,6 +430,16 @@
             `;
             
             container.appendChild(newRow);
+
+            // Yeni eklenen select için Select2'yi başlat
+            $(newRow.querySelector('.appSelect')).select2({
+                placeholder: "Uygulama Ara...",
+                allowClear: true,
+                language: {
+                    noResults: function() { return "Sonuç bulunamadı"; },
+                    searching: function() { return "Aranıyor..."; }
+                }
+            });
         }
 
         // 3. TEMA OLUŞTURMA MANTIĞI (Çoklu Destek)
