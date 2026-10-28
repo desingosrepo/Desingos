@@ -202,7 +202,6 @@
             color: #000;
         }
 
-        /* Yeni Eklenen Özellikler İçin Stiller */
         .search-container {
             width: 90%;
             max-width: 1000px;
@@ -253,7 +252,6 @@
             color: var(--accent-amber);
         }
 
-        /* Başlangıçta gizli olan tema yapım kılavuzu */
         #temaYapimKılavuzu {
             display: none;
             text-align: left;
@@ -307,7 +305,18 @@
                     <li><strong>Klasör Oluşturun:</strong> Filza ile <code>/var/jb/Library/Themes/</code> dizinine gidin. <code>BenimTemam.theme</code> adında bir klasör açın.</li>
                     <li><strong>İkon Klasörü:</strong> Açtığınız klasörün içine <code>IconBundles</code> adında bir alt klasör oluşturun.</li>
                     <li><strong>İsimlendirme:</strong> İndirdiğiniz PNG resmini <code>IconBundles</code> içine atın ve adını değiştirmek istediğiniz uygulamanın kimliği yapın (Örn: <code>com.apple.mobilesafari.png</code>).</li>
-                    <li><strong>Info.plist:</strong> Ana klasöre <code>Info.plist</code> adında bir dosya oluşturun ve içine gerekli XML kodlarını yazın.</li>
+                    <li><strong>Info.plist:</strong> Ana klasöre <code>Info.plist</code> adında bir dosya oluşturun ve içine aşağıdaki kodları yapıştırın:
+                        <pre style="background-color: #000; padding: 12px; border-radius: 8px; overflow-x: auto; color: #F59E0B; font-size: 12px; margin-top: 10px; border: 1px solid #333; text-align: left;"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+    &lt;key&gt;PackageName&lt;/key&gt;
+    &lt;string&gt;Benimtemam&lt;/string&gt;
+    &lt;key&gt;ThemeType&lt;/key&gt;
+    &lt;string&gt;Icons&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;</code></pre>
+                    </li>
                     <li><strong>Test Edin:</strong> SnowBoard'dan aktif edip test edin. Sorunsuz çalışıyorsa klasörü sağ tıklayıp <code>.zip</code> arşivi oluşturun.</li>
                 </ol>
             </div>
@@ -328,14 +337,12 @@
             <div class="theme-image">Önizleme Görseli</div>
             <h2 class="theme-title">DesignosTest</h2>
             <p class="theme-info">iOS 16+ • 1 İkon</p>
-            <!-- Unutma: Buradaki href kısmına kendi zip linkini yapıştır -->
             <a href="#" class="download-btn">İndir (.zip)</a>
         </div>
     </div>
 
     <!-- JAVASCRIPT KODLARI -->
     <script>
-        // 1. Tema Yapım Kılavuzunu Açıp Kapatan Fonksiyon
         function toggleGuide() {
             var guide = document.getElementById("temaYapimKılavuzu");
             if (guide.style.display === "none" || guide.style.display === "") {
@@ -345,23 +352,16 @@
             }
         }
 
-        // 2. Arama Çubuğu İle Temaları Filtreleyen Fonksiyon
         function filterThemes() {
-            // Arama kutusuna yazılanı al ve küçük harfe çevir
             var input = document.getElementById("searchInput");
             var filter = input.value.toLowerCase();
-            
-            // Tüm tema kartlarını al
             var container = document.getElementById("themeContainer");
             var cards = container.getElementsByClassName("theme-card");
 
-            // Her bir kartı kontrol et
             for (var i = 0; i < cards.length; i++) {
-                // Kartın başlığını al
                 var title = cards[i].getElementsByClassName("theme-title")[0];
                 if (title) {
                     var txtValue = title.textContent || title.innerText;
-                    // Eğer yazılan harfler başlıkta geçiyorsa göster, geçmiyorsa gizle
                     if (txtValue.toLowerCase().indexOf(filter) > -1) {
                         cards[i].style.display = "";
                     } else {
