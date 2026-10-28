@@ -171,6 +171,36 @@
         .repo-btn:hover {
             background-color: #2b4cb3;
         }
+
+        /* Yeni Tema Gönder Butonu için Stil */
+        .submit-section {
+            width: 90%;
+            max-width: 1000px;
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(145deg, #1C1C1E, #121212);
+            border: 1px dashed var(--accent-amber);
+            border-radius: 16px;
+        }
+
+        .submit-btn {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--accent-amber);
+            border: 2px solid var(--accent-amber);
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--accent-amber);
+            color: #000;
+        }
     </style>
 </head>
 <body>
@@ -180,7 +210,7 @@
         <p class="subtitle">iPhone'nu Kendin Gibi Yap</p>
     </header>
 
-    <!-- NASIL YAPILIR BÖLÜMÜ (EN ÜSTTE) -->
+    <!-- NASIL YAPILIR BÖLÜMÜ -->
     <h2 class="section-title">📖 Nasıl Yapılır?</h2>
     <div class="how-to">
         <p>Temaları kullanmak için cihazınızda <strong>SnowBoard</strong> tweak'inin kurulu olması gerekir. Aşağıdaki adımları takip edin:</p>
@@ -193,14 +223,25 @@
         <a href="https://www.sparkdev.me/jb?utm_source=chatgpt.com" target="_blank" class="repo-btn">🔗 SparkDev Reposunu Aç</a>
     </div>
 
+    <!-- TEMA GÖNDERME BÖLÜMÜ -->
+    <div class="submit-section">
+        <h3 style="margin-top: 0; color: white;">Kendi Temanı Yaptın mı?</h3>
+        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 15px;">Temanı binlerce kişiyle paylaşmak için bize mail at! <br> (Lütfen <b>.zip</b> dosyasını mailinize eklemeyi unutmayın.)</p>
+        
+        <!-- MAILTO BUTONU: Alıcı otomatik olarak senin Gmail adresin -->
+        <a href="mailto:desingosrepo@gmail.com?subject=Designos%20-%20Yeni%20Tema%20Gönderimi&body=Merhaba,%20Ekli%20dosyada%20kendi%20temam%20bulunmaktadır.%20Sitemde%20yayınlarsanız%20çok%20sevinirim.%0A%0ATema%20Adı:%20%0ATema%20İçeriği:%20" class="submit-btn">
+            ✉️ Tema Gönder
+        </a>
+    </div>
+
     <!-- TEMALAR BÖLÜMÜ -->
     <h2 class="section-title">🎨 Temalar</h2>
     <div class="container">
         <!-- Örnek Tema 1 -->
         <div class="theme-card">
             <div class="theme-image">Önizleme Görseli</div>
-            <h2 class="theme-title">Karanlık Minimal</h2>
-            <p class="theme-info">iOS 16+ • 150 İkon</p>
+            <h2 class="theme-title">DesignosTest</h2>
+            <p class="theme-info">iOS 16+ • 1 İkon</p>
             <a href="#" class="download-btn">İndir (.zip)</a>
         </div>
 
