@@ -31,7 +31,7 @@ Jailbreak dünyasındaki dağınık tema dosyalarını (SnowBoard, IconBundles v
 Temaları kullanabilmek için cihazınızda **SnowBoard** yüklü olmalıdır. 
 SnowBoard tamamen ücretsizdir ve iOS 16 (Rootless) sürümünü destekler. Resmi **SparkDev** reposundan indirebilirsiniz.
 
-- **SparkDev Repo:** [https://sparkdev.me](https://sparkdev.me)
+- **SparkDev Repo:** [https://sparkdev.me](https://www.sparkdev.me/jb?utm_source=chatgpt.com)
 
 ## 🚀 Nasıl Kullanılır?
 
