@@ -172,12 +172,11 @@
             background-color: #2b4cb3;
         }
 
-        /* Yeni Tema Gönder Butonu için Stil */
         .submit-section {
             width: 90%;
             max-width: 1000px;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             padding: 20px;
             background: linear-gradient(145deg, #1C1C1E, #121212);
             border: 1px dashed var(--accent-amber);
@@ -195,11 +194,74 @@
             font-weight: bold;
             font-size: 16px;
             transition: all 0.2s;
+            cursor: pointer;
         }
 
         .submit-btn:hover {
             background-color: var(--accent-amber);
             color: #000;
+        }
+
+        /* Yeni Eklenen Özellikler İçin Stiller */
+        .search-container {
+            width: 90%;
+            max-width: 1000px;
+            margin-bottom: 10px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-amber);
+        }
+
+        .guide-section {
+            width: 90%;
+            max-width: 1000px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .guide-btn {
+            display: inline-block;
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.2s;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .guide-btn:hover {
+            border-color: var(--accent-amber);
+            color: var(--accent-amber);
+        }
+
+        /* Başlangıçta gizli olan tema yapım kılavuzu */
+        #temaYapimKılavuzu {
+            display: none;
+            text-align: left;
+            margin-top: 15px;
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
         }
     </style>
 </head>
@@ -210,57 +272,105 @@
         <p class="subtitle">iPhone'nu Kendin Gibi Yap</p>
     </header>
 
-    <!-- NASIL YAPILIR BÖLÜMÜ -->
-    <h2 class="section-title">📖 Nasıl Yapılır?</h2>
+    <!-- NASIL YAPILIR (KURULUM) BÖLÜMÜ -->
+    <h2 class="section-title">📖 Nasıl Yapılır? (Kurulum)</h2>
     <div class="how-to">
-        <p>Temaları kullanmak için cihazınızda <strong>SnowBoard</strong> tweak'inin kurulu olması gerekir. Aşağıdaki adımları takip edin:</p>
+        <p>Temaları kullanmak için cihazınızda <strong>SnowBoard</strong> tweak'inin kurulu olması gerekir:</p>
         <ol>
-            <li><strong>SnowBoard'u Yükleyin:</strong> Sileo'yu açın ve <a href="https://www.sparkdev.me/jb?utm_source=chatgpt.com" target="_blank" style="color: var(--accent-amber);">SparkDev reposunu</a> ekleyin. Ardından <em>SnowBoard</em> paketini kurun (iOS 16 rootless desteklidir).</li>
-            <li><strong>Temayı İndirin:</strong> Aşağıdaki katalogdan beğendiğiniz temanın "İndir" butonuna tıklayın.</li>
+            <li><strong>SnowBoard'u Yükleyin:</strong> Sileo'yu açın ve <a href="https://www.sparkdev.me/jb?utm_source=chatgpt.com" target="_blank" style="color: var(--accent-amber);">SparkDev reposunu</a> ekleyin. Ardından <em>SnowBoard</em> paketini kurun.</li>
+            <li><strong>Temayı İndirin:</strong> Aşağıdan beğendiğiniz temanın "İndir" butonuna tıklayın.</li>
             <li><strong>Dosyayı Yerleştirin:</strong> İndirdiğiniz <code>.zip</code> dosyasını Filza ile açın ve içindeki klasörü <code>/var/jb/Library/Themes/</code> dizinine taşıyın.</li>
             <li><strong>Aktifleştirin:</strong> Ayarlar > SnowBoard menüsüne gidin, temayı seçin ve "Respring" yapın.</li>
         </ol>
         <a href="https://www.sparkdev.me/jb?utm_source=chatgpt.com" target="_blank" class="repo-btn">🔗 SparkDev Reposunu Aç</a>
     </div>
 
-    <!-- TEMA GÖNDERME BÖLÜMÜ -->
+    <!-- TEMA GÖNDERME VE YAPIM KILAVUZU BÖLÜMÜ -->
     <div class="submit-section">
         <h3 style="margin-top: 0; color: white;">Kendi Temanı Yaptın mı?</h3>
-        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 15px;">Temanı binlerce kişiyle paylaşmak için bize mail at! <br> (Lütfen <b>.zip</b> dosyasını mailinize eklemeyi unutmayın.)</p>
+        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 15px;">Temanı binlerce kişiyle paylaşmak için bize mail at!<br>(Lütfen <b>.zip</b> dosyasını mailinize eklemeyi unutmayın.)</p>
         
-        <!-- MAILTO BUTONU: Alıcı otomatik olarak senin Gmail adresin -->
         <a href="mailto:desingosrepo@gmail.com?subject=Designos%20-%20Yeni%20Tema%20Gönderimi&body=Merhaba,%20Ekli%20dosyada%20kendi%20temam%20bulunmaktadır.%20Sitenizde%20yayınlarsanız%20çok%20sevinirim.%0A%0ATema%20Adı:%20%0ATema%20İçeriği:%20" class="submit-btn">
             ✉️ Tema Gönder
         </a>
+
+        <div style="margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 20px;">
+            <div class="guide-section">
+                <button onclick="toggleGuide()" class="guide-btn">🛠️ Tema Nasıl Yapılır?</button>
+            </div>
+            
+            <!-- Gizli Kılavuz Kutusu -->
+            <div id="temaYapimKılavuzu">
+                <h4 style="color: var(--accent-amber); margin-top: 0;">Sıfırdan Tema Yapımı (Filza ile)</h4>
+                <ol style="padding-left: 20px; color: var(--text-muted); line-height: 1.6;">
+                    <li><strong>Görsel Bulun:</strong> Kare şeklinde bir PNG resmi indirin.</li>
+                    <li><strong>Klasör Oluşturun:</strong> Filza ile <code>/var/jb/Library/Themes/</code> dizinine gidin. <code>BenimTemam.theme</code> adında bir klasör açın.</li>
+                    <li><strong>İkon Klasörü:</strong> Açtığınız klasörün içine <code>IconBundles</code> adında bir alt klasör oluşturun.</li>
+                    <li><strong>İsimlendirme:</strong> İndirdiğiniz PNG resmini <code>IconBundles</code> içine atın ve adını değiştirmek istediğiniz uygulamanın kimliği yapın (Örn: <code>com.apple.mobilesafari.png</code>).</li>
+                    <li><strong>Info.plist:</strong> Ana klasöre <code>Info.plist</code> adında bir dosya oluşturun ve içine gerekli XML kodlarını yazın.</li>
+                    <li><strong>Test Edin:</strong> SnowBoard'dan aktif edip test edin. Sorunsuz çalışıyorsa klasörü sağ tıklayıp <code>.zip</code> arşivi oluşturun.</li>
+                </ol>
+            </div>
+        </div>
     </div>
 
-    <!-- TEMALAR BÖLÜMÜ -->
+    <!-- TEMALAR VE ARAMA BÖLÜMÜ -->
     <h2 class="section-title">🎨 Temalar</h2>
-    <div class="container">
-        <!-- Örnek Tema 1 -->
+    
+    <!-- Arama Çubuğu -->
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" onkeyup="filterThemes()" placeholder="Tema Ara... (Örn: Safari, Karanlık)">
+    </div>
+
+    <div class="container" id="themeContainer">
+        <!-- Sadece Gerçek Olan Tema Kaldı -->
         <div class="theme-card">
             <div class="theme-image">Önizleme Görseli</div>
             <h2 class="theme-title">DesignosTest</h2>
             <p class="theme-info">iOS 16+ • 1 İkon</p>
-            <a href="#" class="download-btn">İndir (.zip)</a>
-        </div>
-
-        <!-- Örnek Tema 2 -->
-        <div class="theme-card">
-            <div class="theme-image">Önizleme Görseli</div>
-            <h2 class="theme-title">Neon Cyberpunk</h2>
-            <p class="theme-info">iOS 16+ • 80 İkon</p>
-            <a href="#" class="download-btn">İndir (.zip)</a>
-        </div>
-        
-        <!-- Örnek Tema 3 -->
-        <div class="theme-card">
-            <div class="theme-image">Önizleme Görseli</div>
-            <h2 class="theme-title">Renkli Kareler</h2>
-            <p class="theme-info">iOS 15-16 • 200 İkon</p>
+            <!-- Unutma: Buradaki href kısmına kendi zip linkini yapıştır -->
             <a href="#" class="download-btn">İndir (.zip)</a>
         </div>
     </div>
+
+    <!-- JAVASCRIPT KODLARI -->
+    <script>
+        // 1. Tema Yapım Kılavuzunu Açıp Kapatan Fonksiyon
+        function toggleGuide() {
+            var guide = document.getElementById("temaYapimKılavuzu");
+            if (guide.style.display === "none" || guide.style.display === "") {
+                guide.style.display = "block";
+            } else {
+                guide.style.display = "none";
+            }
+        }
+
+        // 2. Arama Çubuğu İle Temaları Filtreleyen Fonksiyon
+        function filterThemes() {
+            // Arama kutusuna yazılanı al ve küçük harfe çevir
+            var input = document.getElementById("searchInput");
+            var filter = input.value.toLowerCase();
+            
+            // Tüm tema kartlarını al
+            var container = document.getElementById("themeContainer");
+            var cards = container.getElementsByClassName("theme-card");
+
+            // Her bir kartı kontrol et
+            for (var i = 0; i < cards.length; i++) {
+                // Kartın başlığını al
+                var title = cards[i].getElementsByClassName("theme-title")[0];
+                if (title) {
+                    var txtValue = title.textContent || title.innerText;
+                    // Eğer yazılan harfler başlıkta geçiyorsa göster, geçmiyorsa gizle
+                    if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                        cards[i].style.display = "";
+                    } else {
+                        cards[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 
 </body>
 </html>
