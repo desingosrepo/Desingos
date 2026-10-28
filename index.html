@@ -11,7 +11,6 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-    <!-- ZIP oluşturmak için gerekli kütüphane -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
     <style>
@@ -53,22 +52,35 @@
         p.subtitle { color: var(--text-muted); font-size: 14px; margin-top: 5px; }
 
         .section-title {
-            width: 90%; max-width: 1000px; margin-top: 20px; margin-bottom: 10px;
+            width: 90%; max-width: 1000px; margin-top: 30px; margin-bottom: 10px;
             font-size: 20px; color: var(--accent-amber); border-bottom: 1px solid var(--border-color); padding-bottom: 10px;
         }
 
-        /* Genel Kutu Stilleri */
         .box-section {
             width: 90%; max-width: 1000px; background-color: var(--card-bg);
             border: 1px solid var(--border-color); border-radius: 16px;
-            padding: 20px; margin-bottom: 20px; box-sizing: border-box;
+            padding: 20px; margin-bottom: 15px; box-sizing: border-box;
         }
 
-        /* Tema Üretici Stilleri */
-        .generator-section {
-            border: 2px solid var(--accent-amber);
+        /* Tema Gönder */
+        .submit-section { text-align: center; border: 1px dashed var(--accent-amber); }
+        .submit-btn {
+            display: inline-block; background-color: transparent; color: var(--accent-amber);
+            border: 2px solid var(--accent-amber); text-decoration: none; padding: 12px 25px;
+            border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; transition: all 0.2s;
         }
-        .generator-section h3 { margin-top: 0; color: white; }
+        .submit-btn:hover { background-color: var(--accent-amber); color: #000; }
+
+        /* Açılır Kapanır Butonlar */
+        .toggle-btn {
+            background-color: transparent; color: var(--text-main); border: none;
+            font-size: 18px; font-weight: bold; cursor: pointer; width: 100%;
+            text-align: left; padding: 5px 0; display: flex; justify-content: space-between; align-items: center;
+        }
+        .toggle-btn:hover { color: var(--accent-amber); }
+        .toggle-content { display: none; margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 20px; }
+
+        /* Form Elemanları */
         .form-group { margin-bottom: 15px; text-align: left; }
         .form-group label { display: block; margin-bottom: 5px; color: var(--text-muted); font-size: 14px; }
         .form-group input[type="text"], .form-group select, .form-group input[type="file"] {
@@ -85,29 +97,10 @@
         }
         .generate-btn:hover { background-color: #FBBF24; }
 
-        /* Kılavuz ve Gönder Stilleri */
+        /* Kılavuz Listesi */
         .how-to ol { padding-left: 20px; }
         .how-to li { margin-bottom: 10px; color: var(--text-muted); }
         .how-to strong { color: var(--text-main); }
-        
-        .submit-section { text-align: center; border: 1px dashed var(--accent-amber); }
-        .submit-btn {
-            display: inline-block; background-color: transparent; color: var(--accent-amber);
-            border: 2px solid var(--accent-amber); text-decoration: none; padding: 12px 25px;
-            border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; transition: all 0.2s;
-        }
-        .submit-btn:hover { background-color: var(--accent-amber); color: #000; }
-
-        .guide-btn {
-            background-color: var(--card-bg); color: var(--text-main); border: 1px solid var(--border-color);
-            padding: 12px 25px; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; width: 100%;
-        }
-        .guide-btn:hover { border-color: var(--accent-amber); color: var(--accent-amber); }
-        
-        #temaYapimKılavuzu {
-            display: none; text-align: left; margin-top: 15px; background-color: #2C2C2E;
-            padding: 20px; border-radius: 12px; border: 1px solid var(--border-color);
-        }
 
         /* Temalar ve Arama */
         .search-container { width: 90%; max-width: 1000px; margin-bottom: 10px; }
@@ -143,53 +136,8 @@
         <p class="subtitle">iPhone'nu Kendin Gibi Yap</p>
     </header>
 
-    <!-- 1. TEMA ÜRETİCİ -->
-    <h2 class="section-title">🪄 Anında Tema Üret</h2>
-    <div class="box-section generator-section">
-        <h3>Kendi İkonunu Yarat</h3>
-        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">İstediğin uygulamayı seç, fotoğrafını yükle ve anında SnowBoard uyumlu zip dosyanı indir!</p>
-        
-        <div class="form-group">
-            <label>Tema Adı (Örn: Mavi Safari)</label>
-            <input type="text" id="genThemeName" placeholder="Tema Adı Girin">
-        </div>
-
-        <div class="form-group">
-            <label>Hangi Uygulama İçin?</label>
-            <select id="genAppSelect">
-                <option value="com.apple.mobilesafari">Safari</option>
-                <option value="com.google.ios.youtube">YouTube</option>
-                <option value="com.apple.mobilemail">Mail</option>
-                <option value="com.apple.MobileSMS">Mesajlar</option>
-                <option value="com.apple.Preferences">Ayarlar</option>
-                <option value="com.apple.mobileslideshow">Fotoğraflar</option>
-                <option value="com.apple.Music">Müzik</option>
-                <option value="com.apple.camera">Kamera</option>
-                <option value="com.google.gmail">Gmail</option>
-                <option value="com.burbn.instagram">Instagram</option>
-                <option value="com.atebits.Tweetie2">X (Twitter)</option>
-                <option value="net.whatsapp.WhatsApp">WhatsApp</option>
-                <option value="com.spotify.client">Spotify</option>
-                <option value="com.zhiliaoapp.musically">TikTok</option>
-                <option value="com.netflix.Netflix">Netflix</option>
-                <option value="ph.telegra.Telegraph">Telegram</option>
-                <option value="com.hammerandchisel.discord">Discord</option>
-                <option value="com.facebook.Facebook">Facebook</option>
-                <option value="com.apple.MobileStore">App Store</option>
-                <option value="com.apple.mobiletimer">Saat</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>İkon Fotoğrafı (PNG/JPG)</label>
-            <input type="file" id="genImageFile" accept="image/png, image/jpeg">
-        </div>
-
-        <button class="generate-btn" onclick="generateTheme()">⚡ Temayı Oluştur ve İndir</button>
-    </div>
-
-    <!-- 2. TEMA GÖNDER -->
-    <div class="box-section submit-section">
+    <!-- 1. TEMA GÖNDER -->
+    <div class="box-section submit-section" style="margin-top: 30px;">
         <h3 style="margin-top: 0; color: white;">Kendi Temanı Yaptın mı?</h3>
         <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 15px;">Temanı binlerce kişiyle paylaşmak için bize mail at!<br>(Lütfen <b>.zip</b> dosyasını mailinize eklemeyi unutmayın.)</p>
         
@@ -198,13 +146,63 @@
         </a>
     </div>
 
+    <!-- 2. ANINDA TEMA YAP (AÇILIR KAPANIR) -->
+    <div class="box-section">
+        <button onclick="toggleGen()" id="genBtn" class="toggle-btn">
+            <span>🪄 Anında Tema Yap</span> <span>⬆️</span>
+        </button>
+        
+        <div id="generatorContent" class="toggle-content">
+            <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px; text-align: left;">İstediğin uygulamayı seç, fotoğrafını yükle ve anında SnowBoard uyumlu zip dosyanı indir!</p>
+            
+            <div class="form-group">
+                <label>Tema Adı (Örn: Mavi Safari)</label>
+                <input type="text" id="genThemeName" placeholder="Tema Adı Girin">
+            </div>
+
+            <div class="form-group">
+                <label>Hangi Uygulama İçin?</label>
+                <select id="genAppSelect">
+                    <option value="com.apple.mobilesafari">Safari</option>
+                    <option value="com.google.ios.youtube">YouTube</option>
+                    <option value="com.apple.mobilemail">Mail</option>
+                    <option value="com.apple.MobileSMS">Mesajlar</option>
+                    <option value="com.apple.Preferences">Ayarlar</option>
+                    <option value="com.apple.mobileslideshow">Fotoğraflar</option>
+                    <option value="com.apple.Music">Müzik</option>
+                    <option value="com.apple.camera">Kamera</option>
+                    <option value="com.google.gmail">Gmail</option>
+                    <option value="com.burbn.instagram">Instagram</option>
+                    <option value="com.atebits.Tweetie2">X (Twitter)</option>
+                    <option value="net.whatsapp.WhatsApp">WhatsApp</option>
+                    <option value="com.spotify.client">Spotify</option>
+                    <option value="com.zhiliaoapp.musically">TikTok</option>
+                    <option value="com.netflix.Netflix">Netflix</option>
+                    <option value="ph.telegra.Telegraph">Telegram</option>
+                    <option value="com.hammerandchisel.discord">Discord</option>
+                    <option value="com.facebook.Facebook">Facebook</option>
+                    <option value="com.apple.MobileStore">App Store</option>
+                    <option value="com.apple.mobiletimer">Saat</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>İkon Fotoğrafı (PNG/JPG)</label>
+                <input type="file" id="genImageFile" accept="image/png, image/jpeg">
+            </div>
+
+            <button class="generate-btn" onclick="generateTheme()">⚡ Temayı Oluştur ve İndir</button>
+        </div>
+    </div>
+
     <!-- 3. TEMA NASIL YAPILIR (AÇILIR KAPANIR) -->
     <div class="box-section">
-        <button onclick="toggleGuide()" class="guide-btn">🛠️ Tema Nasıl Yapılır? (Tıkla ve Öğren)</button>
+        <button onclick="toggleGuide()" id="guideBtn" class="toggle-btn">
+            <span>🛠️ Tema Nasıl Yapılır?</span> <span>⬆️</span>
+        </button>
         
-        <div id="temaYapimKılavuzu">
-            <h4 style="color: var(--accent-amber); margin-top: 0;">Sıfırdan Tema Yapımı (Filza ile)</h4>
-            <ol style="padding-left: 20px; color: var(--text-muted); line-height: 1.6;">
+        <div id="temaYapimKılavuzu" class="toggle-content">
+            <ol style="padding-left: 20px; color: var(--text-muted); line-height: 1.6; margin: 0;">
                 <li><strong>Görsel Bulun:</strong> Kare şeklinde bir PNG resmi indirin.</li>
                 <li><strong>Klasör Oluşturun:</strong> Filza ile <code>/var/jb/Library/Themes/</code> dizinine gidin. <code>BenimTemam.theme</code> adında bir klasör açın.</li>
                 <li><strong>İkon Klasörü:</strong> Açtığınız klasörün içine <code>IconBundles</code> adında bir alt klasör oluşturun.</li>
@@ -249,19 +247,47 @@
 
         <div class="theme-card">
             <div class="theme-image">
-                <!-- Düzelttiğin Raw Link buraya eklendi -->
                 <img src="https://raw.githubusercontent.com/desingosrepo/Desingos/main/previews/Alt%C4%B1nUygulamalarPreview.png" alt="Altın Uygulamalar">
             </div>
             <h2 class="theme-title">Altın Uygulamalar</h2>
             <p class="theme-info">iOS 16+ • 11 İkon</p>
-            <!-- Zip linki de güncellendi (eğer GitHub'daki ismi buysa çalışır) -->
             <a href="themes/AltınUygulamalar.zip" class="download-btn">İndir (.zip)</a>
         </div>
     </div>
 
     <!-- JAVASCRIPT KODLARI -->
     <script>
-        // 1. TEMA ÜRETİCİ FONKSİYONU
+        // 1. TEMA ÜRETİCİYİ AÇ/KAPAT
+        function toggleGen() {
+            var content = document.getElementById("generatorContent");
+            var btn = document.getElementById("genBtn");
+            var icon = btn.querySelector('span:last-child');
+
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block";
+                icon.innerText = "⬇️";
+            } else {
+                content.style.display = "none";
+                icon.innerText = "⬆️";
+            }
+        }
+
+        // 2. KILAVUZU AÇ/KAPAT
+        function toggleGuide() {
+            var guide = document.getElementById("temaYapimKılavuzu");
+            var btn = document.getElementById("guideBtn");
+            var icon = btn.querySelector('span:last-child');
+
+            if (guide.style.display === "none" || guide.style.display === "") {
+                guide.style.display = "block";
+                icon.innerText = "⬇️";
+            } else {
+                guide.style.display = "none";
+                icon.innerText = "⬆️";
+            }
+        }
+
+        // 3. TEMA OLUŞTURMA MANTIĞI
         async function generateTheme() {
             const name = document.getElementById('genThemeName').value || 'OzelTema';
             const appId = document.getElementById('genAppSelect').value;
@@ -283,22 +309,18 @@
             reader.onload = function(e) {
                 img.src = e.target.result;
                 img.onload = function() {
-                    // Resmi 180x180 boyutuna ayarlamak için canvas kullanıyoruz
                     const canvas = document.createElement('canvas');
                     canvas.width = 180;
                     canvas.height = 180;
                     const ctx = canvas.getContext('2d');
                     ctx.drawImage(img, 0, 0, 180, 180);
 
-                    // Resmi PNG formatında alıyoruz
                     const pngData = canvas.toDataURL('image/png').split(',')[1];
 
-                    // ZIP dosyasını oluştur
                     const zip = new JSZip();
                     const folderName = name.replace(/\s+/g, '') + ".theme";
                     const folder = zip.folder(folderName);
                     
-                    // Info.plist içeriği
                     const plistContent = `<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -310,11 +332,9 @@
 </dict>
 </plist>`;
 
-                    // Dosyaları zip'e ekle
                     folder.file("Info.plist", plistContent);
                     folder.folder("IconBundles").file(appId + ".png", pngData, {base64: true});
 
-                    // Zip'i indir
                     zip.generateAsync({type:"blob"}).then(function(content) {
                         const url = window.URL.createObjectURL(content);
                         const a = document.createElement("a");
@@ -333,17 +353,7 @@
             reader.readAsDataURL(file);
         }
 
-        // 2. AÇILIR KAPANIR KILAVUZ FONKSİYONU
-        function toggleGuide() {
-            var guide = document.getElementById("temaYapimKılavuzu");
-            if (guide.style.display === "none" || guide.style.display === "") {
-                guide.style.display = "block";
-            } else {
-                guide.style.display = "none";
-            }
-        }
-
-        // 3. ARAMA FONKSİYONU
+        // 4. ARAMA FONKSİYONU
         function filterThemes() {
             var input = document.getElementById("searchInput");
             var filter = input.value.toLowerCase();
