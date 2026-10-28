@@ -53,136 +53,76 @@
         p.subtitle { color: var(--text-muted); font-size: 14px; margin-top: 5px; }
 
         .section-title {
-            width: 90%;
-            max-width: 1000px;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            font-size: 20px;
-            color: var(--accent-amber);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
+            width: 90%; max-width: 1000px; margin-top: 20px; margin-bottom: 10px;
+            font-size: 20px; color: var(--accent-amber); border-bottom: 1px solid var(--border-color); padding-bottom: 10px;
         }
 
-        /* Üretici Alanı Stilleri */
+        /* Genel Kutu Stilleri */
+        .box-section {
+            width: 90%; max-width: 1000px; background-color: var(--card-bg);
+            border: 1px solid var(--border-color); border-radius: 16px;
+            padding: 20px; margin-bottom: 20px; box-sizing: border-box;
+        }
+
+        /* Tema Üretici Stilleri */
         .generator-section {
-            width: 90%;
-            max-width: 1000px;
-            background-color: var(--card-bg);
             border: 2px solid var(--accent-amber);
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-sizing: border-box;
         }
-
         .generator-section h3 { margin-top: 0; color: white; }
-        
-        .form-group {
-            margin-bottom: 15px;
-            text-align: left;
+        .form-group { margin-bottom: 15px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 5px; color: var(--text-muted); font-size: 14px; }
+        .form-group input[type="text"], .form-group select, .form-group input[type="file"] {
+            width: 100%; padding: 12px; background-color: #2C2C2E;
+            border: 1px solid var(--border-color); border-radius: 8px; color: white; font-size: 16px; box-sizing: border-box;
         }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: var(--text-muted);
-            font-size: 14px;
-        }
-
-        .form-group input[type="text"], 
-        .form-group select, 
-        .form-group input[type="file"] {
-            width: 100%;
-            padding: 12px;
-            background-color: #2C2C2E;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            color: white;
-            font-size: 16px;
-            box-sizing: border-box;
-        }
-
         .form-group input[type="file"]::file-selector-button {
-            background-color: var(--accent-amber);
-            color: black;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-right: 15px;
+            background-color: var(--accent-amber); color: black; border: none;
+            padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; margin-right: 15px;
         }
-
         .generate-btn {
-            background-color: var(--accent-amber);
-            color: #000;
-            border: none;
-            padding: 15px;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 16px;
-            cursor: pointer;
-            width: 100%;
-            transition: background 0.2s;
+            background-color: var(--accent-amber); color: #000; border: none; padding: 15px;
+            border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; width: 100%;
         }
-
         .generate-btn:hover { background-color: #FBBF24; }
 
-        /* Diğer bölümler */
-        .how-to, .submit-section {
-            width: 90%;
-            max-width: 1000px;
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 20px;
-            line-height: 1.6;
-            box-sizing: border-box;
-        }
-
+        /* Kılavuz ve Gönder Stilleri */
+        .how-to ol { padding-left: 20px; }
         .how-to li { margin-bottom: 10px; color: var(--text-muted); }
         .how-to strong { color: var(--text-main); }
         
-        .repo-btn {
-            display: inline-block;
-            background-color: var(--accent-navy);
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: bold;
-            margin-top: 15px;
-        }
-
+        .submit-section { text-align: center; border: 1px dashed var(--accent-amber); }
         .submit-btn {
-            display: inline-block;
-            background-color: transparent;
-            color: var(--accent-amber);
-            border: 2px solid var(--accent-amber);
-            text-decoration: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 16px;
+            display: inline-block; background-color: transparent; color: var(--accent-amber);
+            border: 2px solid var(--accent-amber); text-decoration: none; padding: 12px 25px;
+            border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; transition: all 0.2s;
+        }
+        .submit-btn:hover { background-color: var(--accent-amber); color: #000; }
+
+        .guide-btn {
+            background-color: var(--card-bg); color: var(--text-main); border: 1px solid var(--border-color);
+            padding: 12px 25px; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; width: 100%;
+        }
+        .guide-btn:hover { border-color: var(--accent-amber); color: var(--accent-amber); }
+        
+        #temaYapimKılavuzu {
+            display: none; text-align: left; margin-top: 15px; background-color: #2C2C2E;
+            padding: 20px; border-radius: 12px; border: 1px solid var(--border-color);
         }
 
+        /* Temalar ve Arama */
         .search-container { width: 90%; max-width: 1000px; margin-bottom: 10px; }
         .search-input {
             width: 100%; padding: 12px 20px; background-color: var(--card-bg);
             border: 1px solid var(--border-color); border-radius: 10px; color: white; font-size: 16px; box-sizing: border-box;
         }
-
         .container {
             width: 90%; max-width: 1000px; padding: 20px 0;
             display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;
         }
-
         .theme-card {
             background-color: var(--card-bg); border: 1px solid var(--border-color);
             border-radius: 16px; padding: 15px; display: flex; flex-direction: column;
         }
-
         .theme-image {
             width: 100%; height: 180px; background-color: #2C2C2E; border-radius: 10px;
             margin-bottom: 15px; display: flex; align-items: center; justify-content: center; overflow: hidden;
@@ -194,13 +134,6 @@
             background-color: var(--accent-amber); color: #000; text-decoration: none;
             text-align: center; padding: 10px; border-radius: 8px; font-weight: bold; font-size: 14px; margin-top: auto; display: block;
         }
-
-        .guide-section { text-align: center; margin-bottom: 20px; }
-        .guide-btn {
-            background-color: var(--card-bg); color: var(--text-main); border: 1px solid var(--border-color);
-            padding: 12px 25px; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; width: 100%;
-        }
-        #temaYapimKılavuzu { display: none; text-align: left; margin-top: 15px; background-color: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); }
     </style>
 </head>
 <body>
@@ -210,9 +143,9 @@
         <p class="subtitle">iPhone'nu Kendin Gibi Yap</p>
     </header>
 
-    <!-- TEMA ÜRETİCİ (YENİ) -->
+    <!-- 1. TEMA ÜRETİCİ -->
     <h2 class="section-title">🪄 Anında Tema Üret</h2>
-    <div class="generator-section">
+    <div class="box-section generator-section">
         <h3>Kendi İkonunu Yarat</h3>
         <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">İstediğin uygulamayı seç, fotoğrafını yükle ve anında SnowBoard uyumlu zip dosyanı indir!</p>
         
@@ -232,6 +165,18 @@
                 <option value="com.apple.mobileslideshow">Fotoğraflar</option>
                 <option value="com.apple.Music">Müzik</option>
                 <option value="com.apple.camera">Kamera</option>
+                <option value="com.google.gmail">Gmail</option>
+                <option value="com.burbn.instagram">Instagram</option>
+                <option value="com.atebits.Tweetie2">X (Twitter)</option>
+                <option value="net.whatsapp.WhatsApp">WhatsApp</option>
+                <option value="com.spotify.client">Spotify</option>
+                <option value="com.zhiliaoapp.musically">TikTok</option>
+                <option value="com.netflix.Netflix">Netflix</option>
+                <option value="ph.telegra.Telegraph">Telegram</option>
+                <option value="com.hammerandchisel.discord">Discord</option>
+                <option value="com.facebook.Facebook">Facebook</option>
+                <option value="com.apple.MobileStore">App Store</option>
+                <option value="com.apple.mobiletimer">Saat</option>
             </select>
         </div>
 
@@ -243,18 +188,45 @@
         <button class="generate-btn" onclick="generateTheme()">⚡ Temayı Oluştur ve İndir</button>
     </div>
 
-    <!-- NASIL YAPILIR (KURULUM) -->
-    <h2 class="section-title">📖 Nasıl Yapılır? (Kurulum)</h2>
-    <div class="how-to">
-        <p>Temaları kullanmak için cihazınızda <strong>SnowBoard</strong> tweak'inin kurulu olması gerekir:</p>
-        <ol>
-            <li><strong>SnowBoard'u Yükleyin:</strong> Sileo'yu açın ve <a href="https://www.sparkdev.me/jb?utm_source=chatgpt.com" target="_blank" style="color: var(--accent-amber);">SparkDev reposunu</a> ekleyin. Ardından <em>SnowBoard</em> paketini kurun.</li>
-            <li><strong>Temayı İndirin:</strong> Aşağıdan veya üreticiden indirdiğiniz <code>.zip</code> dosyasını Filza ile açın ve içindeki klasörü <code>/var/jb/Library/Themes/</code> dizinine taşıyın.</li>
-            <li><strong>Aktifleştirin:</strong> Ayarlar > SnowBoard menüsüne gidin, temayı seçin ve "Respring" yapın.</li>
-        </ol>
+    <!-- 2. TEMA GÖNDER -->
+    <div class="box-section submit-section">
+        <h3 style="margin-top: 0; color: white;">Kendi Temanı Yaptın mı?</h3>
+        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 15px;">Temanı binlerce kişiyle paylaşmak için bize mail at!<br>(Lütfen <b>.zip</b> dosyasını mailinize eklemeyi unutmayın.)</p>
+        
+        <a href="mailto:desingosrepo@gmail.com?subject=Designos%20-%20Yeni%20Tema%20Gönderimi&body=Merhaba,%20Ekli%20dosyada%20kendi%20temam%20bulunmaktadır.%20Sitenizde%20yayınlarsanız%20çok%20sevinirim.%0A%0ATema%20Adı:%20%0ATema%20İçeriği:%20" class="submit-btn">
+            ✉️ Tema Gönder
+        </a>
     </div>
 
-    <!-- TEMALAR -->
+    <!-- 3. TEMA NASIL YAPILIR (AÇILIR KAPANIR) -->
+    <div class="box-section">
+        <button onclick="toggleGuide()" class="guide-btn">🛠️ Tema Nasıl Yapılır? (Tıkla ve Öğren)</button>
+        
+        <div id="temaYapimKılavuzu">
+            <h4 style="color: var(--accent-amber); margin-top: 0;">Sıfırdan Tema Yapımı (Filza ile)</h4>
+            <ol style="padding-left: 20px; color: var(--text-muted); line-height: 1.6;">
+                <li><strong>Görsel Bulun:</strong> Kare şeklinde bir PNG resmi indirin.</li>
+                <li><strong>Klasör Oluşturun:</strong> Filza ile <code>/var/jb/Library/Themes/</code> dizinine gidin. <code>BenimTemam.theme</code> adında bir klasör açın.</li>
+                <li><strong>İkon Klasörü:</strong> Açtığınız klasörün içine <code>IconBundles</code> adında bir alt klasör oluşturun.</li>
+                <li><strong>İsimlendirme:</strong> İndirdiğiniz PNG resmini <code>IconBundles</code> içine atın ve adını değiştirmek istediğiniz uygulamanın kimliği yapın (Örn: <code>com.apple.mobilesafari.png</code>).</li>
+                <li><strong>Info.plist:</strong> Ana klasöre <code>Info.plist</code> adında bir dosya oluşturun ve içine aşağıdaki kodları yapıştırın:
+                    <pre style="background-color: #000; padding: 12px; border-radius: 8px; overflow-x: auto; color: #F59E0B; font-size: 12px; margin-top: 10px; border: 1px solid #333; text-align: left;"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+    &lt;key&gt;PackageName&lt;/key&gt;
+    &lt;string&gt;Benimtemam&lt;/string&gt;
+    &lt;key&gt;ThemeType&lt;/key&gt;
+    &lt;string&gt;Icons&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;</code></pre>
+                </li>
+                <li><strong>Test Edin:</strong> SnowBoard'dan aktif edip test edin. Sorunsuz çalışıyorsa klasörü sağ tıklayıp <code>.zip</code> arşivi oluşturun.</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- 4. HAZIR TEMALAR -->
     <h2 class="section-title">🎨 Hazır Temalar</h2>
     <div class="search-container">
         <input type="text" id="searchInput" class="search-input" onkeyup="filterThemes()" placeholder="Tema Ara... (Örn: Safari, YouTube, Altın)">
@@ -276,10 +248,14 @@
         </div>
 
         <div class="theme-card">
-            <div class="theme-image"><img src="previews/AltinUygulamalarPreview.png" alt="Altın Uygulamalar"></div>
+            <div class="theme-image">
+                <!-- Düzelttiğin Raw Link buraya eklendi -->
+                <img src="https://raw.githubusercontent.com/desingosrepo/Desingos/main/previews/Alt%C4%B1nUygulamalarPreview.png" alt="Altın Uygulamalar">
+            </div>
             <h2 class="theme-title">Altın Uygulamalar</h2>
             <p class="theme-info">iOS 16+ • 11 İkon</p>
-            <a href="themes/AltinUygulamalar.zip" class="download-btn">İndir (.zip)</a>
+            <!-- Zip linki de güncellendi (eğer GitHub'daki ismi buysa çalışır) -->
+            <a href="themes/AltınUygulamalar.zip" class="download-btn">İndir (.zip)</a>
         </div>
     </div>
 
@@ -357,7 +333,17 @@
             reader.readAsDataURL(file);
         }
 
-        // 2. ARAMA FONKSİYONU
+        // 2. AÇILIR KAPANIR KILAVUZ FONKSİYONU
+        function toggleGuide() {
+            var guide = document.getElementById("temaYapimKılavuzu");
+            if (guide.style.display === "none" || guide.style.display === "") {
+                guide.style.display = "block";
+            } else {
+                guide.style.display = "none";
+            }
+        }
+
+        // 3. ARAMA FONKSİYONU
         function filterThemes() {
             var input = document.getElementById("searchInput");
             var filter = input.value.toLowerCase();
