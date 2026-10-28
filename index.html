@@ -88,8 +88,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--text-muted);
-            font-size: 12px;
+            overflow: hidden; 
+        }
+
+        .theme-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+            padding: 20px; 
+            box-sizing: border-box;
         }
 
         .theme-title {
@@ -270,7 +277,6 @@
         <p class="subtitle">iPhone'nu Kendin Gibi Yap</p>
     </header>
 
-    <!-- NASIL YAPILIR (KURULUM) BÖLÜMÜ -->
     <h2 class="section-title">📖 Nasıl Yapılır? (Kurulum)</h2>
     <div class="how-to">
         <p>Temaları kullanmak için cihazınızda <strong>SnowBoard</strong> tweak'inin kurulu olması gerekir:</p>
@@ -283,7 +289,6 @@
         <a href="https://www.sparkdev.me/jb?utm_source=chatgpt.com" target="_blank" class="repo-btn">🔗 SparkDev Reposunu Aç</a>
     </div>
 
-    <!-- TEMA GÖNDERME VE YAPIM KILAVUZU BÖLÜMÜ -->
     <div class="submit-section">
         <h3 style="margin-top: 0; color: white;">Kendi Temanı Yaptın mı?</h3>
         <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 15px;">Temanı binlerce kişiyle paylaşmak için bize mail at!<br>(Lütfen <b>.zip</b> dosyasını mailinize eklemeyi unutmayın.)</p>
@@ -297,7 +302,6 @@
                 <button onclick="toggleGuide()" class="guide-btn">🛠️ Tema Nasıl Yapılır?</button>
             </div>
             
-            <!-- Gizli Kılavuz Kutusu -->
             <div id="temaYapimKılavuzu">
                 <h4 style="color: var(--accent-amber); margin-top: 0;">Sıfırdan Tema Yapımı (Filza ile)</h4>
                 <ol style="padding-left: 20px; color: var(--text-muted); line-height: 1.6;">
@@ -323,35 +327,36 @@
         </div>
     </div>
 
-    <!-- TEMALAR VE ARAMA BÖLÜMÜ -->
     <h2 class="section-title">🎨 Temalar</h2>
     
-    <!-- Arama Çubuğu -->
     <div class="search-container">
         <input type="text" id="searchInput" class="search-input" onkeyup="filterThemes()" placeholder="Tema Ara... (Örn: Safari, YouTube, Altın)">
     </div>
 
     <div class="container" id="themeContainer">
-        <!-- 1. Tema: DesignosTest -->
+        
+        <!-- 1. Tema (İsmi ekran görüntüsüne göre test-tema.zip yapıldı) -->
         <div class="theme-card">
-            <div class="theme-image">Önizleme Görseli</div>
+            <div class="theme-image">
+                <img src="previews/safari.png" alt="Safari Önizleme">
+            </div>
             <h2 class="theme-title">DesignosTest</h2>
             <p class="theme-info">iOS 16+ • 1 İkon</p>
-            <!-- Kendi zip linkini buraya yapıştır -->
-            <a href="#" class="download-btn">İndir (.zip)</a>
+            <a href="themes/test-tema.zip" class="download-btn">İndir (.zip)</a>
         </div>
 
-        <!-- 2. Tema: Altın YouTube -->
+        <!-- 2. Tema (İsmi ekran görüntüsüne göre AltinYouTube.zip yapıldı) -->
         <div class="theme-card">
-            <div class="theme-image">Önizleme Görseli</div>
+            <div class="theme-image">
+                <img src="previews/youtube.png" alt="Altın YouTube Önizleme">
+            </div>
             <h2 class="theme-title">Altın YouTube</h2>
             <p class="theme-info">iOS 16+ • 1 İkon</p>
-            <!-- BURAYA_ALTIN_YOUTUBE_ZIP_LINKI yazan yeri silip GitHub'dan aldığın linki yapıştır -->
-            <a href="BURAYA_ALTIN_YOUTUBE_ZIP_LINKI" class="download-btn">İndir (.zip)</a>
+            <a href="themes/AltinYouTube.zip" class="download-btn">İndir (.zip)</a>
         </div>
+
     </div>
 
-    <!-- JAVASCRIPT KODLARI -->
     <script>
         function toggleGuide() {
             var guide = document.getElementById("temaYapimKılavuzu");
