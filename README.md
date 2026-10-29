@@ -22,8 +22,8 @@ Geleneksel karmaşık tema yapım süreçlerini ortadan kaldırır. Kullanıcıl
 ## ✨ Özellikler
 
 - 🎨 **Modern Arayüz:** iOS estetiğine uygun, karanlık (Dark Mode) ve şık tasarım.
-- 🪄 **Anında Tema Üretici:** Siteden çıkmadan, istediğiniz uygulamaya istediğiniz fotoğrafı ikon olarak atayın. Sistem arka planda resmi 180x180 boyutuna ayarlar ve `Info.plist` dosyasını otomatik oluşturup `.zip` olarak indirir.
-- 🔍 **Akıllı Arama:** Tema kataloğunda ve tema üreticide 100'den fazla uygulama arasında anında arama yapın.
+- 🪄 **Anında Tema Üretici:** Siteden çıkmadan, istediğiniz uygulamaya istediğiniz fotoğrafı ikon olarak atayın. Sistem arka planda resmi 180x180 boyutuna ayarlar ve `Info.plist` dosyasını otomatik oluşturup `.zip` olarak verir.
+- 🔍 **Akıllı Arama:** Tema kataloğunda ve tema üreticide kullanıcıların yaptığı uygulama arasında anında arama yapın.
 - 📦 **Uyumlu Formatlar:** SnowBoard ile tam uyumlu (Rootless destekli) `.zip` formatında çıktı.
 - 🌐 **PWA Desteği:** Siteyi iPhone'unuzun ana ekranına bir uygulama gibi ekleyebilirsiniz.
 
