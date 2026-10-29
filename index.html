@@ -55,7 +55,7 @@
 
         header {
             width: 100%;
-            padding: 20px;
+            padding: 25px 20px;
             text-align: center;
             border-bottom: 1px solid var(--border-color);
             background: rgba(28, 28, 30, 0.9);
@@ -63,21 +63,25 @@
             position: sticky;
             top: 0;
             z-index: 100;
-        }
-
-        /* Başlık ve GitHub Logosu İçin Yeni Stiller */
-        .header-title-container {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            gap: 12px;
+            box-sizing: border-box;
         }
 
         h1 { margin: 0; font-size: 24px; letter-spacing: 2px; font-weight: 800; }
         h1 span { color: var(--accent-amber); }
         
+        p.subtitle { 
+            color: var(--text-muted); 
+            font-size: 14px; 
+            margin-top: 5px; 
+            margin-bottom: 15px; /* Logo ile arasına boşluk koymak için */
+        }
+
+        /* GitHub Logosu İçin Yeni Stiller */
         .github-logo {
-            height: 28px;
+            height: 55px; /* Logo büyütüldü */
             width: auto;
             transition: transform 0.2s;
             opacity: 0.9;
@@ -87,8 +91,6 @@
             transform: scale(1.1);
             opacity: 1;
         }
-
-        p.subtitle { color: var(--text-muted); font-size: 14px; margin-top: 5px; }
 
         .section-title {
             width: 90%; max-width: 1000px; margin-top: 30px; margin-bottom: 10px;
@@ -193,13 +195,11 @@
 <body>
 
     <header>
-        <div class="header-title-container">
-            <h1>DESIGN<span>OS</span></h1>
-            <a href="https://github.com/desingosrepo/Desingos/tree/main" target="_blank" title="GitHub Sayfasını Ziyaret Et">
-                <img src="https://raw.githubusercontent.com/desingosrepo/Desingos/refs/heads/main/Githublogo.png" alt="GitHub" class="github-logo">
-            </a>
-        </div>
+        <h1>DESIGN<span>OS</span></h1>
         <p class="subtitle">iPhone'nu Kendin Gibi Yap</p>
+        <a href="https://github.com/desingosrepo/Desingos/tree/main" target="_blank" title="GitHub Sayfasını Ziyaret Et">
+            <img src="https://raw.githubusercontent.com/desingosrepo/Desingos/refs/heads/main/Githublogo.png" alt="GitHub" class="github-logo">
+        </a>
     </header>
 
     <div class="box-section submit-section" style="margin-top: 30px;">
