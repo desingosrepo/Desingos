@@ -79,7 +79,6 @@
             margin-bottom: 15px;
         }
 
-        /* GitHub Logosu İçin Stiller */
         .github-logo {
             height: 55px;
             width: auto;
@@ -198,7 +197,6 @@
         <h1>DESIGN<span>OS</span></h1>
         <p class="subtitle">iPhone'nu Kendin Gibi Yap</p>
         <a href="https://github.com/desingosrepo/Desingos/tree/main" target="_blank" title="GitHub Sayfasını Ziyaret Et">
-            <!-- Yeni fotoğraf linki buraya eklendi -->
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScTjwH5XQcID69499Gn5K2rmycXyqdxI-YizVs-HHySw&s=10" alt="GitHub" class="github-logo">
         </a>
     </header>
@@ -364,6 +362,26 @@
         </div>
     </div>
 
+    <!-- YENİ EKLENEN BÖLÜM: IPA İndiremiyor Musun? -->
+    <div class="box-section">
+        <button onclick="toggleIpa()" id="ipaBtn" class="toggle-btn">
+            <span>📲 İpa İndiremiyor Musun?</span> <span>⬆️</span>
+        </button>
+        
+        <div id="ipaContent" class="toggle-content">
+            <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px; text-align: left;">IPA dosyalarını indirip yüklerken sorun mu yaşıyorsun? Aşağıdaki araçları kullanabilirsin:</p>
+            
+            <div style="text-align: center; margin-bottom: 20px;">
+                <a href="ossigner.html" class="submit-btn" style="border-color: #F59E0B; color: #F59E0B;">🔐 IPA İmzalayıcıyı Aç</a>
+            </div>
+            
+            <div style="text-align: center;">
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 10px;">Dopamine jailbreak uygulamasını doğrudan indirmek için:</p>
+                <a href="https://github.com/opa334/Dopamine/releases/latest/download/Dopamine.ipa" target="_blank" class="submit-btn">📥 Dopamine IPA İndir</a>
+            </div>
+        </div>
+    </div>
+
     <h2 class="section-title">🎨 Hazır Temalar</h2>
     <div class="search-container">
         <input type="text" id="searchInput" class="search-input" onkeyup="filterThemes()" placeholder="Tema Ara... (Örn: Safari, YouTube, Altın)">
@@ -430,6 +448,21 @@
                 icon.innerText = "⬇️";
             } else {
                 guide.style.display = "none";
+                icon.innerText = "⬆️";
+            }
+        }
+
+        // YENİ EKLENEN FONKSİYON: IPA Bölümünü Aç/Kapat
+        function toggleIpa() {
+            var content = document.getElementById("ipaContent");
+            var btn = document.getElementById("ipaBtn");
+            var icon = btn.querySelector('span:last-child');
+
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block";
+                icon.innerText = "⬇️";
+            } else {
+                content.style.display = "none";
                 icon.innerText = "⬆️";
             }
         }
