@@ -201,7 +201,7 @@
         </a>
     </header>
 
-    <!-- YENİ EKLENEN KURULUM BÖLÜMÜ -->
+    <!-- KURULUM BÖLÜMÜ -->
     <div class="box-section" style="margin-top: 30px;">
         <button onclick="toggleInstall()" id="installBtn" class="toggle-btn">
             <span>🪛 Nasıl Kurulur?</span> <span>⬆️</span>
@@ -215,9 +215,10 @@
             <!-- Desingos (Üstte) -->
             <div style="background: #2C2C2E; padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); margin-bottom: 15px; text-align: left;">
                 <h3 style="margin-top: 0; color: var(--accent-amber); font-size: 18px;">1. Desingos (OsmanBurda Sürümü)</h3>
-                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 15px;">Kendi modladığın tema motoru. İndirip Filza veya Sileo ile kurabilirsin.</p>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 15px;">Kendi modladığın tema motoru. Sileo imza uyarısı vermemesi için doğrudan Filza ile kurabilirsin.</p>
                 <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                    <a href="https://github.com/desingosrepo/deisngos-repo/raw/refs/heads/main/Deisngos-1.5.38-Beta4-rootless.deb" class="submit-btn" style="font-size: 14px; padding: 10px 15px;">📥 Desingos .deb İndir</a>
+                    <a href="https://github.com/desingosrepo/deisngos-repo/raw/refs/heads/main/Deisngos-1.5.38-Beta4-rootless.deb" class="submit-btn" style="font-size: 14px; padding: 10px 15px; background-color: var(--accent-amber); color: #000; border: none;">⚡ Tek Tıkla Kur (Doğrudan)</a>
+                    <a href="sileo://package/com.osmanburda.desingos" class="submit-btn" style="font-size: 14px; padding: 10px 15px;">Sileo'da Aç (Uyarı Verir)</a>
                 </div>
             </div>
 
@@ -231,7 +232,6 @@
             </div>
         </div>
     </div>
-    <!-- YENİ EKLENEN BÖLÜM SONU -->
 
     <div class="box-section submit-section">
         <h3 style="margin-top: 0; color: white;">Kendi Temanı Yaptın mı?</h3>
@@ -455,7 +455,6 @@
             });
         });
 
-        // YENİ EKLENEN FONKSİYON: Kurulum Bölümünü Aç/Kapat
         function toggleInstall() {
             var content = document.getElementById("installContent");
             var btn = document.getElementById("installBtn");
