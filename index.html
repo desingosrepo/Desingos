@@ -201,7 +201,39 @@
         </a>
     </header>
 
-    <div class="box-section submit-section" style="margin-top: 30px;">
+    <!-- YENİ EKLENEN KURULUM BÖLÜMÜ -->
+    <div class="box-section" style="margin-top: 30px;">
+        <button onclick="toggleInstall()" id="installBtn" class="toggle-btn">
+            <span>🪛 Nasıl Kurulur?</span> <span>⬆️</span>
+        </button>
+        
+        <div id="installContent" class="toggle-content">
+            <div style="background-color: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5; border-radius: 12px; padding: 15px; margin-bottom: 20px; font-size: 14px; text-align: left;">
+                <strong>⚠️ Önemli Uyarı:</strong> Desingos ve SnowBoard aynı anda <b>kurulamaz</b>. İkisini birlikte kurmak cihazınızda çakışmaya (Safe Mode) neden olur. Lütfen sadece birini seçin.
+            </div>
+
+            <!-- Desingos (Üstte) -->
+            <div style="background: #2C2C2E; padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); margin-bottom: 15px; text-align: left;">
+                <h3 style="margin-top: 0; color: var(--accent-amber); font-size: 18px;">1. Desingos (OsmanBurda Sürümü)</h3>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 15px;">Kendi modladığın tema motoru. İndirip Filza veya Sileo ile kurabilirsin.</p>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <a href="https://github.com/desingosrepo/deisngos-repo/raw/refs/heads/main/Deisngos-1.5.38-Beta4-rootless.deb" class="submit-btn" style="font-size: 14px; padding: 10px 15px;">📥 Desingos .deb İndir</a>
+                </div>
+            </div>
+
+            <!-- SnowBoard (Altta) -->
+            <div style="background: #2C2C2E; padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); text-align: left;">
+                <h3 style="margin-top: 0; color: var(--accent-amber); font-size: 18px;">2. SnowBoard (Orijinal Sürüm)</h3>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 15px;">SparkDev tarafından geliştirilen orijinal tema motoru. (Desingos kuruluysa bunu kurmayın).</p>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <a href="sileo://source/https://sparkdev.me" class="submit-btn" style="font-size: 14px; padding: 10px 15px;">Sileo'ya Kaynak Ekle</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- YENİ EKLENEN BÖLÜM SONU -->
+
+    <div class="box-section submit-section">
         <h3 style="margin-top: 0; color: white;">Kendi Temanı Yaptın mı?</h3>
         <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 15px;">Temanı binlerce kişiyle paylaşmak için bize mail at!<br>(Lütfen <b>.zip</b> dosyasını mailinize eklemeyi unutmayın.)</p>
         
@@ -362,7 +394,6 @@
         </div>
     </div>
 
-    <!-- YENİ EKLENEN BÖLÜM: IPA İndiremiyor Musun? -->
     <div class="box-section">
         <button onclick="toggleIpa()" id="ipaBtn" class="toggle-btn">
             <span>📲 İpa İndiremiyor Musun?</span> <span>⬆️</span>
@@ -424,6 +455,21 @@
             });
         });
 
+        // YENİ EKLENEN FONKSİYON: Kurulum Bölümünü Aç/Kapat
+        function toggleInstall() {
+            var content = document.getElementById("installContent");
+            var btn = document.getElementById("installBtn");
+            var icon = btn.querySelector('span:last-child');
+
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block";
+                icon.innerText = "⬇️";
+            } else {
+                content.style.display = "none";
+                icon.innerText = "⬆️";
+            }
+        }
+
         function toggleGen() {
             var content = document.getElementById("generatorContent");
             var btn = document.getElementById("genBtn");
@@ -452,7 +498,6 @@
             }
         }
 
-        // YENİ EKLENEN FONKSİYON: IPA Bölümünü Aç/Kapat
         function toggleIpa() {
             var content = document.getElementById("ipaContent");
             var btn = document.getElementById("ipaBtn");
